@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  username: <%= ENV.fetch('DATABASE_USER') { 'postgres' } %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'postgres' } %>
+  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
+  port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  timeout: 5000
+  template: template0
+  connect_timeout: 5
+  variables:
+    statement_timeout: 15s
+    lock_timeout: 10s
+
+development:
+  <<: *default
+  database: <%= ENV.fetch('DATABASE_NAME') { Rails.application.class.module_parent.to_s.underscore + "_development" } %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch('DATABASE_NAME') { Rails.application.class.module_parent.to_s.underscore + "_test" } %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch('DATABASE_NAME') { Rails.application.class.module_parent.to_s.underscore + "_production" } %>

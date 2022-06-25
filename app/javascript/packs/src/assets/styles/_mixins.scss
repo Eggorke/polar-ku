@@ -1,0 +1,66 @@
+@import './variables';
+
+@mixin mobile-sm {
+  @media (min-width: $mobile-sm + px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (min-width: $mobile + px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet + px) {
+    @content;
+  }
+}
+
+@mixin tablet-slider {
+  @media (min-width: $tablet-slider + px) {
+    @content;
+  }
+}
+
+@mixin tablet-header {
+  @media (min-width: $tablet-header + px) {
+    @content;
+  }
+}
+
+@mixin tablet-big {
+  @media (min-width: $tablet-big + px) {
+    @content;
+  }
+}
+
+@mixin desktop-min {
+  @media (min-width: $desktop-min + px) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media (min-width: $desktop-sm + px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop + px) {
+    @content;
+  }
+}
+
+@mixin desktop-md {
+  @media (min-width: $desktop-md + px) {
+    @content;
+  }
+}
+
+@mixin desktop-big {
+  @media (min-width: $desktop-big + px) {
+    @content;
+  }
+}

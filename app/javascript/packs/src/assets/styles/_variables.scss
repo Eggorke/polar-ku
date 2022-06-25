@@ -1,0 +1,66 @@
+// font-size
+$font-size-text-xs: 14px;
+$font-size-text-sm: 16px;
+$font-size-text-lg: 18px;
+$font-size-text-xl: 20px;
+
+$font-size-title-xl: 62px;
+$font-size-title-xxl: 92px;
+$font-size-title-lg: 48px;
+$font-size-title-lgs: 40px;
+$font-size-title-md: 36px;
+$font-size-title-sm: 32px;
+$font-size-title-xs: 24px;
+
+//animation
+$animation-time: 0.1s;
+$animation-time-long: 0.5s;
+
+// background
+$background-color-root: #ffffff;
+
+// colors
+$color-root: #ffffff;
+$color-black: #000000;
+$color-pink: #F9508D;
+$color-error: #F9508D;
+$color-main: #696666;
+
+// border-radius
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 10px;
+
+// z-indexes
+$tooltip-z-index: 5;
+$confirm-alert-z-index: 10;
+$carousel-control-z-index: 3;
+$modal-overlay-z-index: 9;
+$toast-container-z-index: 15;
+$menu-container-z-index: 20;
+$burger-container-z-index: 25;
+
+// window min-width
+$mobile-sm: 425;
+$mobile: 576;
+$tablet: 768;
+$tablet-slider: 840;
+$tablet-header: 860;
+$tablet-big: 992;
+$desktop-min: 1024;
+$desktop-sm: 1200;
+$desktop: 1440;
+$desktop-md: 1600;
+$desktop-big: 1920;
+
+:export {
+  mobile: $mobile;
+  tablet: $tablet;
+  tabletSlider: $tablet-slider;
+  tabletBig: $tablet-big;
+  desktopMin: $desktop-min;
+  desktopSm: $desktop-sm;
+  desktop: $desktop;
+  desktopMd: $desktop-md;
+  desktopBig: $desktop-big;
+}
