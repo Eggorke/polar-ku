@@ -10,10 +10,15 @@ interface BurgerProps {
 }
 
 const Burger = (props: BurgerProps) => {
+
   return (
     <Menu {...props}>
       <Link to={PublicRoutes.login.path}>Вход</Link>
       <Link to={PublicRoutes.registration.path}>Регистрация</Link>
+      <a href='#activity'>Деятельность компании</a>
+      <a href='#clients'>Клиенты</a>
+      <a href='#feedbacks'>Отзывы</a>
+      <a href='#contacts'>Контакты</a>
     </Menu>
   )
 }

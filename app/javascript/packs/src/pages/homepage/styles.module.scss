@@ -3,7 +3,9 @@
 
 .firstScreen {
   min-height: 100vh;
-  background-color: rgb(194, 169, 169);
+  background: url('../../assets/images/homepage.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,10 +15,62 @@
 
 .secondScreen {
   min-height: 100vh;
-  background-color: rgb(110, 177, 204);
+  //background-color: $color-main;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondScreenTitle {
+  width: 100%;
+  padding-top: 30px;
+  font-size: $font-size-title-lg;
+  color: $color-blue-main;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondScreenImagesWrapper {
+  margin-top: 100px;
+  margin-inline: auto;
+  width: 90%;
+  height: 500px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.secondScreenImageCart {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.secondScreenImageWrap {
+  height: 250px;
+  width: 250px;
+  border-radius: 100%;
+  background-color: rgb(198, 196, 196);
+}
+
+.secondScreenImageTitle {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 30px;
 }
 
 .thirdScreen {
   min-height: 100vh;
   background-color: rgb(140, 201, 135);
+}
+
+.fourthScreen {
+  min-height: 100vh;
+  background-color: rgb(123, 111, 215);
+}
+
+.footer {
+  min-height: 40vh;
+  background-color: rgb(215, 215, 111);
 }

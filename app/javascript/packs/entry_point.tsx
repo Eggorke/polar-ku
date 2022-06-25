@@ -6,7 +6,6 @@ import './src/assets/scss/fonts.scss'
 import createStore from './src/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-import ApiService from './src/lib/services/api-service';
 
 export const store = createStore().store;
 const persistor = createStore().persistor;
