@@ -32,7 +32,7 @@ const PrivateContent: React.FC = (props: privateContentPropsI) => {
     <div>
       {email}
       <button onClick={handleLogout}>
-        Logout
+        Logout button
       </button>
     </div>
   )
