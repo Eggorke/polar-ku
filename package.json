@@ -1,6 +1,9 @@
 {
   "name": "polar_kamensk",
   "private": true,
+  "engines": {
+    "node": "14.17.6"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.17.12",
     "@rails/actioncable": "^6.0.0",
