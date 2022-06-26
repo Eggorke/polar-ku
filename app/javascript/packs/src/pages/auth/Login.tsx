@@ -6,6 +6,8 @@ import ApiService from '../../lib/services/api-service'
 import { useNavigate } from 'react-router-dom'
 import PrivateRoutes from '../../navigation/PrivateRoutes'
 import { useFormik } from 'formik'
+import { Link } from 'react-router-dom'
+import PublicRoutes from '../../navigation/PublicRoutes'
 
 interface registrationPropsI {
   state: {
@@ -29,7 +31,7 @@ const Login: React.FC = (props: registrationPropsI) => {
 
   React.useEffect(() => {
     if (isAuthenticated) {
-      navigate(PrivateRoutes.dashboard.path)
+      navigate(PrivateRoutes.app.path)
     }
   }, [isAuthenticated])
 
@@ -88,6 +90,7 @@ const Login: React.FC = (props: registrationPropsI) => {
         <button type='submit'>
           Войти
         </button>
+        <Link to={`../${PublicRoutes.registration.path}`}>Dont have an account?</Link>
       </form>
     </div>
   )

@@ -1,39 +1,24 @@
 import * as React from 'react'
 import { clearProfile, userSignOut } from '../../actions'
 import { connect } from 'react-redux'
-import { authInitialStateI, profileInitialStateI } from '../../reducers/interfaces'
-import ApiService from '../../lib/services/api-service'
+import s from './styles.module.scss'
+import { Routes, Route } from 'react-router-dom'
+import Dashboard from './dashboard/Dashboard'
+import Orders from './orders/Orders'
+import PrivateRoutes from '../../navigation/PrivateRoutes'
+import Navbar from './navbar/Navbar'
 
-interface privateContentPropsI {
-  state: {
-    auth: authInitialStateI
-    profile: profileInitialStateI
-  }
-  clearProfile: () => {type: string}
-  userSignOut: () => {type: string}
-}
 
-const apiService = new ApiService()
-
-const PrivateContent: React.FC = (props: privateContentPropsI) => {
-  const { state, clearProfile, userSignOut } = props
-  const { email } = state.profile
-
-  const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    apiService.signOut()
-      .then(() => {
-        clearProfile()
-        userSignOut()
-      })
-  }
-
+const PrivateContent = () => {
   return (
-    <div>
-      {email}
-      <button onClick={handleLogout}>
-        Logout button
-      </button>
+    <div className={s.main}>
+      <Navbar />
+      <div className={s.content}>
+        <Routes>
+          <Route path='/' element={<Dashboard />}/>
+          <Route path={PrivateRoutes.orders.path} element={<Orders />}/>
+        </Routes>
+      </div>
     </div>
   )
 }

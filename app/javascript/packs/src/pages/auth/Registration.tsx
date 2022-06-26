@@ -3,9 +3,11 @@ import { userSignUp } from '../../actions'
 import { connect } from 'react-redux'
 import { authInitialStateI, profileInitialStateI } from '../../reducers/interfaces'
 import ApiService from '../../lib/services/api-service'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PrivateRoutes from '../../navigation/PrivateRoutes'
 import { useFormik } from 'formik'
+import PublicRoutes from '../../navigation/PublicRoutes'
+
 
 interface registrationPropsI {
   state: {
@@ -29,7 +31,7 @@ const Registration: React.FC = (props: registrationPropsI) => {
 
   React.useEffect(() => {
     if (isAuthenticated) {
-      navigate(PrivateRoutes.dashboard.path)
+      navigate(PrivateRoutes.app.path)
     }
   }, [isAuthenticated])
 
@@ -112,6 +114,7 @@ const Registration: React.FC = (props: registrationPropsI) => {
         <button type='submit'>
           Зарегистрироваться
         </button>
+        <Link to={`../${PublicRoutes.login.path}`}>Have account?</Link>
       </form>
     </div>
   )

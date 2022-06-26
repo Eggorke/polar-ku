@@ -80,7 +80,7 @@ const App: React.FC = (props: appPropsI) => {
         <Route path={PublicRoutes.home.path} element={<Homepage />}/>
         <Route path={PublicRoutes.login.path} element={<Login />}/>
         <Route path={PublicRoutes.registration.path} element={<Registration />}/>
-        <Route path={PrivateRoutes.dashboard.path} element={<PrivateWrapper><PrivateContent /></PrivateWrapper>}/>
+        <Route path={PrivateRoutes.root.path} element={<PrivateWrapper><PrivateContent /></PrivateWrapper>}/>
       </Routes>
     </div>
   )

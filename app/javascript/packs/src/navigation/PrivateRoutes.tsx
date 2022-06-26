@@ -3,12 +3,20 @@ interface route {
 }
 
 interface routes {
-  dashboard: route
+  root: route
+  app: route
+  orders: route
 }
 
 const PrivateRoutes: routes = {
-  dashboard: {
+  root: {
+    path: '/app/*'
+  },
+  app: {
     path: '/app'
+  },
+  orders: {
+    path: '/orders'
   }
 }
 

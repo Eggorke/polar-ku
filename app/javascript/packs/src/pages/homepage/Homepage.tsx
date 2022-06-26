@@ -1,50 +1,27 @@
 import * as React from 'react'
-import Burger from './Burger';
+import Header from './Header';
 import s from './styles.module.scss';
-import './burger.css';
+import { useDimensions } from '../../lib/hooks/useDimension';
 
-
-// вместо бургера сделать обычный хэдер наверно
+// как будто чего то не хватает на первом экране, надо подумать
 const Homepage = () => {
   return (
-    <div id="Homepage">
-      <Burger pageWrapId={"page-wrap"} outerContainerId={"Homepage"} />
-      <div id="page-wrap">
-        <div className={s.firstScreen}>
-          ПОЛАР
-        </div>
-        <div className={s.secondScreen} id='activity'>
-          <div className={s.secondScreenTitle}>
-            Деятельность компании
-          </div>
-          <div className={s.secondScreenImagesWrapper}>
-            <div className={s.secondScreenImageCart}>
-              <div className={s.secondScreenImageWrap}></div>
-              <div className={s.secondScreenImageTitle}>Title</div>
-              <div className={s.secondScreenImageDesc}>Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание</div>
-            </div>
-            <div className={s.secondScreenImageCart}>
-              <div className={s.secondScreenImageWrap}></div>
-              <div className={s.secondScreenImageTitle}>Title</div>
-              <div className={s.secondScreenImageDesc}>Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание</div>
-            </div>
-            <div className={s.secondScreenImageCart}>
-              <div className={s.secondScreenImageWrap}></div>
-              <div className={s.secondScreenImageTitle}>Title</div>
-              <div className={s.secondScreenImageDesc}>Какое то описание Какое то описание Какое то описание Какое то описание Какое то описание</div>
-            </div>
-          </div>
-        </div>
-        <div className={s.thirdScreen} id='clients'>
-          Наши клиенты
-        </div>
-        <div className={s.fourthScreen} id='feedbacks'>
-          Отзывы
-        </div>
-        <div className={s.footer} id='contacts'>
-          Footer
+    <div>
+      <Header />
+      <div className={s.banner}>
+        <div className={s.bannerTitle}>
+          <span>ПОЛАР</span>
+          <span>ПОЛАР</span>
         </div>
       </div>
+      <div className={s.about} id='about'>
+        <div className={s.aboutTitle}>
+          <span>О компании</span>
+        </div>
+      </div>
+      <div className={s.clients} id='clients'>clients</div>
+      <div className={s.feedbacks} id='feedbacks'>feedbacks</div>
+      <div className={s.contacts} id='contacts'>footer</div>
     </div>
   )
 }
