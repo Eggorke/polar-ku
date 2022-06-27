@@ -8,7 +8,6 @@ import PrivateRoutes from '../../navigation/PrivateRoutes'
 import { useFormik } from 'formik'
 import PublicRoutes from '../../navigation/PublicRoutes'
 
-
 interface registrationPropsI {
   state: {
     auth: authInitialStateI
@@ -22,9 +21,28 @@ interface responseI {
   headers: authInitialStateI
 }
 
+interface organizationI {
+  id: string
+  attributes: {
+    address: string
+    email: string
+    name: string
+    phone: string
+  }
+}
+
+interface organizationsResponseI {
+  data: {
+    data: organizationI[]
+  }
+}
+
 const apiService = new ApiService()
 
 const Registration: React.FC = (props: registrationPropsI) => {
+
+  const [organizationsArr, setOrganizationsArr] = React.useState<[] | organizationI[]>([])
+
   const { state, userSignUp } = props
   const { isAuthenticated } = state.profile
   const navigate = useNavigate()
@@ -35,12 +53,23 @@ const Registration: React.FC = (props: registrationPropsI) => {
     }
   }, [isAuthenticated])
 
+  React.useEffect(() => {
+    apiService.getAllOrganizations()
+      .then((response: organizationsResponseI) => {
+        return response.data
+      })
+      .then(data => {
+        setOrganizationsArr(data.data)
+      })
+  }, [])
+
   const formik = useFormik({
     initialValues: {
       first_name: '',
       last_name: '',
       email: '',
-      password: ''
+      password: '',
+      organization_id: ''
     },
     onSubmit: (values) => {
       apiService.signUp(values)
@@ -101,6 +130,25 @@ const Registration: React.FC = (props: registrationPropsI) => {
           value={formik.values.email}
           required={true}>
         </input>
+        <select
+          id='organization_id'
+          name='organization_id'
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          className='auth-input'
+          placeholder='Организация'
+          required={true}
+          defaultValue={''}
+        >
+          <option disabled value={''}>Выберите организацию из списка</option>
+          {organizationsArr.length > 0 ?
+            organizationsArr.map((el: organizationI) => {
+              return (
+                <option value={el.id} key={el.id}>{el.attributes.name}</option>
+              )
+            }) : null
+          }
+        </select>
         <input
           id='password'
           name='password'

@@ -25,13 +25,18 @@ interface appPropsI {
 
 interface responseI {
   status: number
-  data: dataI
+  data: {
+    data: dataI
+  }
 }
 
 interface dataI {
-  first_name: string
-  last_name: string
-  email: string
+  attributes: {
+    first_name: string
+    last_name: string
+    email: string
+    organization_id: string
+  }
   id: string
 }
 
@@ -55,15 +60,16 @@ const App: React.FC = (props: appPropsI) => {
           if (response.status !== 200) {
             return logout()
           }
-          return response.data
+          return response.data.data
         })
         .then((data: dataI) => {
           getSelfInfo(
             {
               id: data.id,
-              firstName: data.first_name,
-              lastName: data.last_name,
-              email: data.email,
+              firstName: data.attributes.first_name,
+              lastName: data.attributes.last_name,
+              email: data.attributes.email,
+              organizationId: data.attributes.organization_id,
               isAuthenticated: true
             }
           )

@@ -1,7 +1,7 @@
 import api from "../api"
 
 export default class ApiService {
-  // Users
+  // Auth
   getCurrentUser() {
     return api.get('/api/v1/self_info')
   }
@@ -16,5 +16,10 @@ export default class ApiService {
 
   signOut() {
     return api.delete('/auth/sign_out')
+  }
+
+  // Organizations
+  getAllOrganizations() {
+    return api.get('/public/organizations')
   }
 }

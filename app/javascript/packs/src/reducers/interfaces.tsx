@@ -9,6 +9,7 @@ export interface profileInitialStateI {
   email: string | null
   firstName: string | null
   lastName: string | null
+  organizationId: string | null
   isAuthenticated: boolean
 }
 

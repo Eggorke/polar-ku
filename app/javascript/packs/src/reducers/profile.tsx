@@ -5,6 +5,7 @@ const initialState: profileInitialStateI = {
   email: null,
   firstName: null,
   lastName: null,
+  organizationId: null,
   isAuthenticated: false
 }
 
@@ -16,6 +17,7 @@ const reducer = (state: profileInitialStateI = initialState, action: profileActi
         email: action.payload.email,
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
+        organizationId: action.payload.organizationId,
         isAuthenticated: action.payload.isAuthenticated
       };
     case 'CLEAR_PROFILE': {

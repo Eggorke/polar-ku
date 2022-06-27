@@ -11,6 +11,6 @@ class Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email first_name last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email first_name last_name organization_id])
   end
 end

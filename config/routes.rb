@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
+  namespace :public do
+    resources :organizations, only: %i[index]
+  end
+
   namespace :api do
     namespace :v1 do
       get '/self_info', to: 'users#self_info'

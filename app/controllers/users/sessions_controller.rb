@@ -7,7 +7,7 @@ class Users::SessionsController < DeviseTokenAuth::SessionsController
     else
       render(
         json:       current_user,
-        serializer: UsersSerializer,
+        serializer: UserSerializer,
         status:     :ok
       )
     end
