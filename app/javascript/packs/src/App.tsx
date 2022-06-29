@@ -12,6 +12,7 @@ import ApiService from './lib/services/api-service'
 import { getSelfInfo, clearProfile, userSignOut } from './actions'
 import { authInitialStateI, profileInitialStateI } from './reducers/interfaces'
 import PrivateWrapper from './navigation/PrivateWrapper'
+import { Toaster } from 'react-hot-toast';
 
 interface appPropsI {
   state: {
@@ -82,6 +83,10 @@ const App: React.FC = (props: appPropsI) => {
 
   return (
     <div className='app'>
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+      />
       <Routes>
         <Route path={PublicRoutes.home.path} element={<Homepage />}/>
         <Route path={PublicRoutes.login.path} element={<Login />}/>

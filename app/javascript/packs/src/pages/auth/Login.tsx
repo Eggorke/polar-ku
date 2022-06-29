@@ -8,6 +8,8 @@ import PrivateRoutes from '../../navigation/PrivateRoutes'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import PublicRoutes from '../../navigation/PublicRoutes'
+import toast from 'react-hot-toast';
+import { Config } from '../../config'
 
 interface registrationPropsI {
   state: {
@@ -20,6 +22,9 @@ interface registrationPropsI {
 interface responseI {
   status: number
   headers: authInitialStateI
+  data: {
+    errors: string[]
+  }
 }
 
 const apiService = new ApiService()
@@ -44,17 +49,19 @@ const Login: React.FC = (props: registrationPropsI) => {
       apiService.signIn(values)
         .then((response: responseI) => {
           if (response.status !== 200) {
-            console.log('error')
+            toast.error(response.data.errors[0], { duration: Config.NOTIFICATION_DEFAULT_DURATION })
           } else {
             userSignIn({
               accessToken: response.headers['access-token'],
               accessClient: response.headers['client'],
               accessUID: response.headers['uid']
             })
+            toast.success('Добро пожаловать', { duration: Config.NOTIFICATION_DEFAULT_DURATION })
           }
         })
         .catch(error => {
           console.log(error)
+          toast.error(error, { duration: Config.NOTIFICATION_DEFAULT_DURATION })
         })
     }
   })

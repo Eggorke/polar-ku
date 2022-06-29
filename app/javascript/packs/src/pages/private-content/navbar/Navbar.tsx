@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import ApiService from '../../../lib/services/api-service'
 import { NavLink } from 'react-router-dom'
 import PrivateRoutes from '../../../navigation/PrivateRoutes'
-
+import toast from 'react-hot-toast';
+import { Config } from '../../../config'
 
 interface navbarPropsI {
   state: {
@@ -30,6 +31,7 @@ const Navbar: React.FC = (props: navbarPropsI) => {
       .then(() => {
         clearProfile()
         userSignOut()
+        toast.success('Ждем вас вновь!', { duration: Config.NOTIFICATION_DEFAULT_DURATION })
       })
   }
 

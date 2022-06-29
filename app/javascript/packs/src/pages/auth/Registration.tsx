@@ -7,6 +7,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import PrivateRoutes from '../../navigation/PrivateRoutes'
 import { useFormik } from 'formik'
 import PublicRoutes from '../../navigation/PublicRoutes'
+import toast from 'react-hot-toast';
+import { Config } from '../../config'
 
 interface registrationPropsI {
   state: {
@@ -19,6 +21,11 @@ interface registrationPropsI {
 interface responseI {
   status: number
   headers: authInitialStateI
+  data: {
+    errors: {
+      full_messages: string[]
+    }
+  }
 }
 
 interface organizationI {
@@ -75,13 +82,14 @@ const Registration: React.FC = (props: registrationPropsI) => {
       apiService.signUp(values)
         .then((response: responseI) => {
           if (response.status !== 200) {
-            console.log('error')
+            toast.error(response.data.errors.full_messages[0], {  duration: Config.NOTIFICATION_DEFAULT_DURATION })
           } else {
             userSignUp({
               accessToken: response.headers['access-token'],
               accessClient: response.headers['client'],
               accessUID: response.headers['uid']
             })
+            toast.success('Добро пожаловать', {  duration: Config.NOTIFICATION_DEFAULT_DURATION })
           }
         })
         .catch(error => {
