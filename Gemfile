@@ -20,6 +20,7 @@ gem 'redis'
 gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
 gem 'sidekiq'
 gem 'jsonapi-serializer'
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
