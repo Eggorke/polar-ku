@@ -1,1 +1,2 @@
 Organization.create(name: 'Test org', phone: '+7999999', email: 'dev@example.com', address: 'example address')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
