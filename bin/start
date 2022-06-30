@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+APP_ROOT = File.expand_path('..', __dir__)
+Dir.chdir(APP_ROOT) do
+  begin
+    exec "foreman start -f Procfile.dev"
+  rescue
+    $stderr.puts "Error with foreman"
+    exit 1
+  end
+end
