@@ -85,7 +85,7 @@
 
     span {
       font-size: $font-size-title-xxl;
-      color: $color-blue-main;
+      color: $color-blue-light;
       font-weight: 600;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -99,10 +99,10 @@
     }
     span:nth-child(1) {
       color: transparent;
-      -webkit-text-stroke: 2px $color-blue-main;
+      -webkit-text-stroke: 2px $color-blue-light;
     }
     span:nth-child(2) {
-      color: $color-blue-main;
+      color: $color-blue-light;
       animation: animate 4s ease-in-out infinite;
     }
   }

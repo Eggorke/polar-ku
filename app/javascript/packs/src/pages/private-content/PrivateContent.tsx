@@ -6,17 +6,23 @@ import { Routes, Route } from 'react-router-dom'
 import Dashboard from './dashboard/Dashboard'
 import Orders from './orders/Orders'
 import PrivateRoutes from '../../navigation/PrivateRoutes'
-import Navbar from './navbar/Navbar'
+import Sidebar from './sidebar/Sidebar'
+import Reports from './reports/Reports'
+import Settings from './settings/Settings'
 
 
 const PrivateContent = () => {
   return (
     <div className={s.main}>
-      <Navbar />
-      <div className={s.content}>
+      <div className={s.sidebarContainer}>
+        <Sidebar />
+      </div>
+      <div className={s.contentContainer}>
         <Routes>
           <Route path='/' element={<Dashboard />}/>
           <Route path={PrivateRoutes.orders.path} element={<Orders />}/>
+          <Route path={PrivateRoutes.reports.path} element={<Reports />}/>
+          <Route path={PrivateRoutes.settings.path} element={<Settings />}/>
         </Routes>
       </div>
     </div>

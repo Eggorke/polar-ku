@@ -2,9 +2,17 @@
 @import '../../assets/styles/variables';
 
 .main {
-
+  display: flex;
+  min-height: 100vh;
 }
 
-.content {
-  padding: 10px;
+.sidebarContainer {
+  width: 250px;
+  min-height: 100vh;
+}
+
+.contentContainer {
+  width: calc(100% - 290px);
+  padding: 40px;
+  background-color: $color-grey-main;
 }
