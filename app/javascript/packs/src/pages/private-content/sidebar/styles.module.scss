@@ -22,7 +22,9 @@
 .userAvatar {
   height: 130px;
   width: 130px;
-  background-color: rgb(211, 207, 207);
+  background-image: url('../../../assets/images/userplaceholder.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 100%;
   margin-bottom: 20px;
   margin-top: 40px;
@@ -45,7 +47,7 @@
 }
 
 .navLink {
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +55,7 @@
   color: $color-root;
   transition-property: color;
   transition: 0.5s ease;
+  font-size: $font-size-text-lg;
   div {
     width: 70%;
     height: 100%;
@@ -78,6 +81,7 @@
   transition: all 0.5s ease;
   background-color: $color-grey-main;
   color: $color-blue-main !important;
+  position: relative;
 
   .title {
     transition: all 0.5s ease;
@@ -88,4 +92,18 @@
 .logout {
   margin-top: auto;
   margin-bottom: 40px;
+  height: 40px;
+  width: 150px;
+  font-size: $font-size-text-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-blue-main;
+  cursor: pointer;
+  border: none;
+
+  .icon {
+    margin-right: 10px;
+  }
 }
+

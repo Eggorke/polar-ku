@@ -9,7 +9,7 @@ import PrivateRoutes from '../../../navigation/PrivateRoutes'
 import toast from 'react-hot-toast';
 import { Config } from '../../../config'
 import classNames from 'classnames'
-import { IoGrid, IoHammerSharp, IoPerson, IoOpen } from 'react-icons/io5';
+import { IoGrid, IoHammerSharp, IoPerson, IoOpen, IoExitOutline } from 'react-icons/io5';
 
 interface navbarPropsI {
   state: {
@@ -81,6 +81,7 @@ const Sidebar: React.FC = (props: navbarPropsI) => {
                   isActive ? classNames(s.navLink, s.activeLink) : s.navLink
                 }
                 end={true}
+                key={el.route}
               >
                 <div><span className={s.icon}>{el.icon}</span><span className={s.title}>{el.title}</span></div>
               </NavLink>
@@ -88,9 +89,9 @@ const Sidebar: React.FC = (props: navbarPropsI) => {
           })
         }
       </div>
-      <button className={s.logout} onClick={handleLogout}>
-          Logout
-        </button>
+      <button className={classNames(s.logout)} onClick={handleLogout}>
+        <span className={s.icon}><IoExitOutline /></span><span className={s.title}>Выйти</span>
+      </button>
     </div>
   )
 }
