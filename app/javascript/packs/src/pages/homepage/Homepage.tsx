@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Header from './Header';
 import s from './styles.module.scss';
-import { useDimensions } from '../../lib/hooks/useDimension';
 
 // как будто чего то не хватает на первом экране, надо подумать
 const Homepage = () => {

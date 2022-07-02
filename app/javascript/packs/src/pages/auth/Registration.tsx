@@ -60,6 +60,7 @@ const Registration: React.FC = (props: registrationPropsI) => {
     }
   }, [isAuthenticated])
 
+  // добавить проверку на isAuthenticated чтобы не делать лишний запрос
   React.useEffect(() => {
     apiService.getAllOrganizations()
       .then((response: organizationsResponseI) => {
