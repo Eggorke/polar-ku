@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Api::V1::UsersController < Api::V1::BaseController
+class Api::V1::UsersController < AuthenticatedController
 
   def self_info
-    render_serialized_payload { serialize_resource(current_user) }
+    render_serialized_payload { serialize_resource(resource) }
   end
 
   protected
@@ -12,4 +12,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     UserSerializer
   end
 
+  def resource
+    current_user
+  end
 end

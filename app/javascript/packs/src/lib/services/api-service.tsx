@@ -19,7 +19,12 @@ export default class ApiService {
   }
 
   // Organizations
-  getAllOrganizations() {
-    return api.get('/public/organizations')
+  getAllOrganizations(query: {}) {
+    return api.get('/public/organizations', {query: query})
+  }
+
+  // Orders
+  createNewOrder(payload: {}) {
+    return api.post('/api/v1/orders', {body: payload})
   }
 }

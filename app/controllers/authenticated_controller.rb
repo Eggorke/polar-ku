@@ -2,6 +2,7 @@
 
 class AuthenticatedController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
+  include Serializable
 
   before_action :authenticate_user!
 

@@ -38,11 +38,15 @@
   align-items: center;
   width: 100%;
   height: 80px;
-  background-color: $color-main;
+  //background-color: $color-main;
+  background-color: rgba($color: #000000, $alpha: 0.0);
   color: $color-root;
+  position: absolute;
+  font-size: $font-size-title-xs;
+  font-weight: 600;
 
   .headerLogo {
-    margin-left: 40px;
+    margin-left: 100px;
     font-size: $font-size-title-sm;
   }
 
@@ -65,46 +69,24 @@
 
 .link:hover {
   transition: all 0.5s;
-  color: $color-blue-main;
+  color: $color-blue-light;
 }
 
 // Pages
 .banner {
-  height: calc(100vh - 80px);
-  background: url('../../assets/images/homepage.jpeg');
+  height: calc(100vh);
+  background: url('../../assets/images/homepage.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-position-y: 50%;
 
-  .bannerTitle {
-    margin-bottom: 20%;
-    position: relative;
-
-    span {
-      font-size: $font-size-title-xxl;
-      color: $color-blue-light;
-      font-weight: 600;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      letter-spacing: 15px;
-      transform: translate(-50%, -50%);
-      position: absolute;
-    }
-    span:nth-child(1) {
-      color: transparent;
-      -webkit-text-stroke: 2px $color-blue-light;
-    }
-    span:nth-child(2) {
-      color: $color-blue-light;
-      animation: animate 4s ease-in-out infinite;
-    }
+  .bannerWrap {
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

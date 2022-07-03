@@ -60,15 +60,16 @@ const Registration: React.FC = (props: registrationPropsI) => {
     }
   }, [isAuthenticated])
 
-  // добавить проверку на isAuthenticated чтобы не делать лишний запрос
   React.useEffect(() => {
-    apiService.getAllOrganizations()
+    if (!isAuthenticated) {
+      apiService.getAllOrganizations({page: 1, per_page: 50})
       .then((response: organizationsResponseI) => {
         return response.data
       })
       .then(data => {
         setOrganizationsArr(data.data)
       })
+    }
   }, [])
 
   const formik = useFormik({
