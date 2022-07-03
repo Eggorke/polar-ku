@@ -1,4 +1,5 @@
 import * as React from 'react'
+import WavedText from '../../components/wavedText/WavedText';
 import Header from './Header';
 import s from './styles.module.scss';
 
@@ -8,9 +9,8 @@ const Homepage = () => {
     <div>
       <Header />
       <div className={s.banner}>
-        <div className={s.bannerTitle}>
-          <span>ПОЛАР</span>
-          <span>ПОЛАР</span>
+        <div className={s.bannerWrap}>
+          <span style={{color: 'white'}}>Define design</span>
         </div>
       </div>
       <div className={s.about} id='about'>

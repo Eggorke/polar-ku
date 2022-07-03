@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
 class Public::OrganizationsController < ApplicationController
-  # TO DO add paginations
+  include Serializable
+
   def index
-    render json: serializer.new(scope).serializable_hash, status: :ok
+    render_serialized_payload { serialize_collection(collection) }
   end
 
   private
 
   def serializer
-    OrganizationSerializer
+    PublicOrganizationSerializer
   end
 
-  def scope
-    Organization.where(public: true)
+  def collection
+    Organization.only_public
   end
 end
