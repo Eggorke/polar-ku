@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
 
   belongs_to :organization
+  has_many :orders
+
 end
