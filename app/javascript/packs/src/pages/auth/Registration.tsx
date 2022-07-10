@@ -9,6 +9,9 @@ import { useFormik } from 'formik'
 import PublicRoutes from '../../navigation/PublicRoutes'
 import toast from 'react-hot-toast';
 import { Config } from '../../config'
+import classNames from "classnames";
+import s from './styles.module.scss';
+
 
 interface registrationPropsI {
   state: {
@@ -63,12 +66,12 @@ const Registration: React.FC = (props: registrationPropsI) => {
   React.useEffect(() => {
     if (!isAuthenticated) {
       apiService.getAllOrganizations({page: 1, per_page: 50})
-      .then((response: organizationsResponseI) => {
-        return response.data
-      })
-      .then(data => {
-        setOrganizationsArr(data.data)
-      })
+          .then((response: organizationsResponseI) => {
+            return response.data
+          })
+          .then(data => {
+            setOrganizationsArr(data.data)
+          })
     }
   }, [])
 
@@ -82,99 +85,117 @@ const Registration: React.FC = (props: registrationPropsI) => {
     },
     onSubmit: (values) => {
       apiService.signUp(values)
-        .then((response: responseI) => {
-          if (response.status !== 200) {
-            toast.error(response.data.errors.full_messages[0], {  duration: Config.NOTIFICATION_DEFAULT_DURATION })
-          } else {
-            userSignUp({
-              accessToken: response.headers['access-token'],
-              accessClient: response.headers['client'],
-              accessUID: response.headers['uid']
-            })
-            toast.success('Добро пожаловать', {  duration: Config.NOTIFICATION_DEFAULT_DURATION })
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
+          .then((response: responseI) => {
+            if (response.status !== 200) {
+              toast.error(response.data.errors.full_messages[0], {  duration: Config.NOTIFICATION_DEFAULT_DURATION })
+            } else {
+              userSignUp({
+                accessToken: response.headers['access-token'],
+                accessClient: response.headers['client'],
+                accessUID: response.headers['uid']
+              })
+              toast.success('Добро пожаловать', {  duration: Config.NOTIFICATION_DEFAULT_DURATION })
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          })
     }
   })
 
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          formik.handleSubmit();
-        }}
-      >
-        <input
-          id='first_name'
-          name='first_name'
-          type='text'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder='Имя'
-          value={formik.values.first_name}
-          required={true}
-        >
-        </input>
-        <input
-          id='last_name'
-          name='last_name'
-          type='text'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          className='auth-input'
-          placeholder='Фамилия'
-          value={formik.values.last_name}
-          required={true}>
-        </input>
-        <input
-          id='email'
-          name='email'
-          type='email'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder='Электронная почта'
-          value={formik.values.email}
-          required={true}>
-        </input>
-        <select
-          id='organization_id'
-          name='organization_id'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          className='auth-input'
-          placeholder='Организация'
-          required={true}
-          defaultValue={''}
-        >
-          <option disabled value={''}>Выберите организацию из списка</option>
-          {organizationsArr.length > 0 ?
-            organizationsArr.map((el: organizationI) => {
-              return (
-                <option value={el.id} key={el.id}>{el.attributes.name}</option>
-              )
-            }) : null
-          }
-        </select>
-        <input
-          id='password'
-          name='password'
-          type='password'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder='Пароль'
-          value={formik.values.password}
-          required={true}>
-        </input>
-        <button type='submit'>
-          Зарегистрироваться
-        </button>
-        <Link to={`../${PublicRoutes.login.path}`}>Have account?</Link>
-      </form>
-    </div>
+      <div className={classNames("banner", s.authContainer)}>
+        <div className={s.formContainer}>
+          <h2 className={s.oauthTitle}> Регистрация </h2>
+          <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                formik.handleSubmit();
+              }}
+          >
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="first_name">Имя</label>
+              <input className={s.input}
+                     id='first_name'
+                     name='first_name'
+                     type='text'
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}
+                     placeholder='Имя'
+                     value={formik.values.first_name}
+                     required={true}
+              >
+              </input>
+            </div>
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="last_name">Фамилия</label>
+              <input className={s.input}
+                     id='last_name'
+                     name='last_name'
+                     type='text'
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}
+                     placeholder='Фамилия'
+                     value={formik.values.last_name}
+                     required={true}>
+              </input>
+            </div>
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="email">Электронная почта</label>
+              <input className={s.input}
+                     id='email'
+                     name='email'
+                     type='email'
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}
+                     placeholder='Электронная почта'
+                     value={formik.values.email}
+                     required={true}>
+              </input>
+            </div>
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="organization_id">Организация</label>
+              <select
+                  className={s.dropdown}
+                  id='organization_id'
+                  name='organization_id'
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder='Организация'
+                  required={true}
+                  defaultValue={''}
+              >
+                <option disabled value={''}>Выберите организацию из списка</option>
+                {organizationsArr.length > 0 ?
+                    organizationsArr.map((el: organizationI) => {
+                      return (
+                          <option value={el.id} key={el.id}>{el.attributes.name}</option>
+                      )
+                    }) : null
+                }
+              </select>
+            </div>
+
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="password">Пароль</label>
+              <input className={s.input}
+                     id='password'
+                     name='password'
+                     type='password'
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}
+                     placeholder='Пароль'
+                     value={formik.values.password}
+                     required={true}>
+              </input>
+            </div>
+            <button className={s.signInButton} type='submit'>
+              Зарегистрироваться
+            </button>
+            <Link className={s.label} to={`../${PublicRoutes.login.path}`}>Have account?</Link>
+          </form>
+        </div>
+      </div>
   )
 }
 

@@ -1,0 +1,77 @@
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.formContainer {
+  padding: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.65);
+  width: 80%;
+
+  @media (min-width: 640px) {
+    max-width: 28rem;
+  }
+}
+
+.oauthTitle {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.inputWrapper {
+  margin-bottom: 1rem;
+}
+
+.input {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 0.5px;
+  }
+
+.signInButton {
+  display: inline-flex;
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem;
+  background-color: #2563EB;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: capitalize;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: transparent;
+
+  :hover {
+    background-color: #1D4ED8;
+  }
+}
+
+.dropdown {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 0.5px;
+
+  :hover {
+    border-color: #9CA3AF;
+  }
+}

@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 import PublicRoutes from '../../navigation/PublicRoutes'
 import toast from 'react-hot-toast';
 import { Config } from '../../config'
+import s from './styles.module.scss';
+import classNames from "classnames";
 
 interface registrationPropsI {
   state: {
@@ -47,59 +49,68 @@ const Login: React.FC = (props: registrationPropsI) => {
     },
     onSubmit: (values) => {
       apiService.signIn(values)
-        .then((response: responseI) => {
-          if (response.status !== 200) {
-            toast.error(response.data.errors[0], { duration: Config.NOTIFICATION_DEFAULT_DURATION })
-          } else {
-            userSignIn({
-              accessToken: response.headers['access-token'],
-              accessClient: response.headers['client'],
-              accessUID: response.headers['uid']
-            })
-            toast.success('Добро пожаловать', { duration: Config.NOTIFICATION_DEFAULT_DURATION })
-          }
-        })
-        .catch(error => {
-          console.log(error)
-          toast.error(error, { duration: Config.NOTIFICATION_DEFAULT_DURATION })
-        })
+          .then((response: responseI) => {
+            if (response.status !== 200) {
+              toast.error(response.data.errors[0], { duration: Config.NOTIFICATION_DEFAULT_DURATION })
+            } else {
+              userSignIn({
+                accessToken: response.headers['access-token'],
+                accessClient: response.headers['client'],
+                accessUID: response.headers['uid']
+              })
+              toast.success('Добро пожаловать', { duration: Config.NOTIFICATION_DEFAULT_DURATION })
+            }
+          })
+          .catch(error => {
+            console.log(error)
+            toast.error(error, { duration: Config.NOTIFICATION_DEFAULT_DURATION })
+          })
     }
   })
 
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          formik.handleSubmit();
-        }}
-      >
-        <input
-          id='email'
-          name='email'
-          type='email'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder='Электронная почта'
-          value={formik.values.email}
-          required={true}>
-        </input>
-        <input
-          id='password'
-          name='password'
-          type='password'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          placeholder='Пароль'
-          value={formik.values.password}
-          required={true}>
-        </input>
-        <button type='submit'>
-          Войти
-        </button>
-        <Link to={`../${PublicRoutes.registration.path}`}>Dont have an account?</Link>
-      </form>
-    </div>
+      <div className={classNames("banner", s.authContainer)}>
+        <div className={s.formContainer}>
+          <h2 className={s.oauthTitle}> Вход </h2>
+          <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                formik.handleSubmit();
+              }}
+          >
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="email">Электронная почта</label>
+              <input className={s.input}
+                     id='email'
+                     name='email'
+                     type='email'
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}
+                     placeholder='Электронная почта'
+                     value={formik.values.email}
+                     required={true}>
+              </input>
+            </div>
+            <div className={s.inputWrapper}>
+              <label className={s.label} htmlFor="email">Пароль</label>
+              <input className={s.input}
+                     id='password'
+                     name='password'
+                     type='password'
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}
+                     placeholder='Пароль'
+                     value={formik.values.password}
+                     required={true}>
+              </input>
+            </div>
+            <button className={s.signInButton} type='submit'>
+              Войти
+            </button>
+            <Link className={s.label} to={`../${PublicRoutes.registration.path}`}>Dont have an account?</Link>
+          </form>
+        </div>
+      </div>
   )
 }
 
