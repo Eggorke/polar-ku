@@ -8,8 +8,8 @@ const Homepage = () => {
   return (
     <div>
       <Header />
-      <div className={s.banner}>
-        <div className={s.bannerWrap}>
+      <div className={'banner'}>
+        <div className={'bannerWrap'}>
           <span style={{color: 'white'}}>Define design</span>
         </div>
       </div>
