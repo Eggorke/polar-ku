@@ -6,6 +6,7 @@ interface routes {
   root: route
   app: route
   orders: route
+  newOrder: route
   reports: route
   settings: route
 }
@@ -19,6 +20,9 @@ const PrivateRoutes: routes = {
   },
   orders: {
     path: '/orders'
+  },
+  newOrder: {
+    path: '/orders/new-order'
   },
   reports: {
     path: '/reports'

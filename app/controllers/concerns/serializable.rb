@@ -8,7 +8,7 @@ module Serializable
 
   # Call it when you need to serialize one resource
   def serialize_resource(resource)
-    serializer.new(resource).serializable_hash
+    serializer.new(resource, resource_options).serializable_hash
   end
 
   # Call it when you need to serialize collection of resources
@@ -19,6 +19,18 @@ module Serializable
 
   def render_serialized_payload(status = 200)
     render json: yield, status: status, content_type: content_type
+  end
+
+  def render_error_payload(error, status = 422)
+    json = if error.is_a?(ActiveModel::Errors)
+             { error: error.full_messages.to_sentence, errors: error.messages }
+           elsif error.is_a?(Struct)
+             { error: error.to_s, errors: error.to_h }
+           else
+             { error: error }
+           end
+
+    render json: json, status: status, content_type: content_type
   end
 
   private
@@ -43,5 +55,9 @@ module Serializable
       total_count: collection.total_count,
       total_pages: collection.total_pages
     }
+  end
+
+  def resource_options
+    {}
   end
 end

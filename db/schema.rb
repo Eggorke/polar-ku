@@ -63,20 +63,21 @@ ActiveRecord::Schema.define(version: 2022_07_06_175533) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "order_items", force: :cascade do |t|
+  create_table "order_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "state"
     t.string "place"
     t.string "subject"
     t.string "description"
-    t.bigint "order_id", null: false
+    t.uuid "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "state"
     t.date "due_date"
+    t.integer "internal_id"
     t.uuid "organization_id", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

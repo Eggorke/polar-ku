@@ -9,6 +9,7 @@ import PrivateRoutes from '../../navigation/PrivateRoutes'
 import Sidebar from './sidebar/Sidebar'
 import Reports from './reports/Reports'
 import Settings from './settings/Settings'
+import NewOrder from './orders/NewOrder'
 
 
 const PrivateContent = () => {
@@ -21,6 +22,7 @@ const PrivateContent = () => {
         <Routes>
           <Route path='/' element={<Dashboard />}/>
           <Route path={PrivateRoutes.orders.path} element={<Orders />}/>
+          <Route path={PrivateRoutes.newOrder.path} element={<NewOrder />}/>
           <Route path={PrivateRoutes.reports.path} element={<Reports />}/>
           <Route path={PrivateRoutes.settings.path} element={<Settings />}/>
         </Routes>
