@@ -1,30 +1,35 @@
 import api from "../api"
+import BACKEND_ROUTES from "./backend-routes"
 
 export default class ApiService {
   // Auth
   getCurrentUser() {
-    return api.get('/api/v1/self_info')
+    return api.get(BACKEND_ROUTES.selfInfo)
   }
 
   signUp(payload: {}) {
-    return api.post('/auth', {body: payload})
+    return api.post(BACKEND_ROUTES.signUp, {body: payload})
   }
 
   signIn(payload: {}) {
-    return api.post('/auth/sign_in', {body: payload})
+    return api.post(BACKEND_ROUTES.signIn, {body: payload})
   }
 
   signOut() {
-    return api.delete('/auth/sign_out')
+    return api.delete(BACKEND_ROUTES.signOut)
   }
 
   // Organizations
   getAllOrganizations(query: {}) {
-    return api.get('/public/organizations', {query: query})
+    return api.get(BACKEND_ROUTES.organizations, {query: query})
   }
 
   // Orders
   createNewOrder(payload: {}) {
-    return api.post('/api/v1/orders', {body: payload})
+    return api.post(BACKEND_ROUTES.orders, {body: payload})
+  }
+
+  getAllOrders() {
+    return api.get(BACKEND_ROUTES.orders)
   }
 }

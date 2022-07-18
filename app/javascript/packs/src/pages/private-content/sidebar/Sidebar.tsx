@@ -27,12 +27,13 @@ const Sidebar: React.FC = (props: navbarPropsI) => {
   const { state, clearProfile, userSignOut } = props
   const { email, firstName, lastName } = state.profile
 
+  const DashboardLink = {
+    route: PrivateRoutes.app.path,
+    title: 'Главная',
+    icon: <IoGrid />
+  }
+
   const LINKS = [
-    {
-      route: PrivateRoutes.app.path,
-      title: 'Главная',
-      icon: <IoGrid />
-    },
     {
       route: `/app${PrivateRoutes.orders.path}`,
       title: 'Заявки',
@@ -72,6 +73,15 @@ const Sidebar: React.FC = (props: navbarPropsI) => {
         </div>
       </div>
       <div className={s.navWrapper}>
+        <NavLink
+          to={DashboardLink.route}
+          className={({ isActive }) =>
+            isActive ? classNames(s.navLink, s.activeLink) : s.navLink
+          }
+          end
+        >
+          <div><span className={s.icon}>{DashboardLink.icon}</span><span className={s.title}>{DashboardLink.title}</span></div>
+        </NavLink>
         {
           LINKS.map(el => {
             return (
@@ -80,7 +90,6 @@ const Sidebar: React.FC = (props: navbarPropsI) => {
                 className={({ isActive }) =>
                   isActive ? classNames(s.navLink, s.activeLink) : s.navLink
                 }
-                end={true}
                 key={el.route}
               >
                 <div><span className={s.icon}>{el.icon}</span><span className={s.title}>{el.title}</span></div>
