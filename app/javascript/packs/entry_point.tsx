@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './src/App';
 import { BrowserRouter } from 'react-router-dom'
 import './src/assets/scss/fonts.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import createStore from './src/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'

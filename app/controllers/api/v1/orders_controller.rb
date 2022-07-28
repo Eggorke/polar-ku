@@ -7,6 +7,10 @@ class Api::V1::OrdersController < AuthenticatedController
     render_serialized_payload { serialize_collection(collection) }
   end
 
+  def show
+    render_serialized_payload { serialize_resource(resource) }
+  end
+
   def create
     model_module::Create.new(permitted_params, current_user).tap do |service|
       if service.valid?
@@ -19,6 +23,10 @@ class Api::V1::OrdersController < AuthenticatedController
   end
 
   protected
+
+  def resource
+    scope.for_organization(current_user.organization_id).find(params[:id])
+  end
 
   def serializer
     OrderSerializer

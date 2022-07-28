@@ -1,0 +1,13 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/variables';
+
+
+.row {
+  cursor: pointer;
+  //height: 50px;
+}
+
+.row:hover {
+  filter: opacity(0.6);
+  transition: all 1s;
+}

@@ -1,5 +1,6 @@
 @import 'assets/styles/variables';
 
+
 .app{
   font-family: 'Roboto';
   background: $background-color-root;
@@ -16,7 +17,7 @@ body{
 }
 
 a{
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 html {
