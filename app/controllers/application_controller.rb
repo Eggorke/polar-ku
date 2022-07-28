@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include ActionController::MimeResponds
 
   rescue_from ActiveRecord::RecordInvalid, with: :process_invalid_error
+  rescue_from ActiveRecord::RecordNotFound, with: :process_not_found
 
   rescue_from UncaughtThrowError do |exception|
     original_exception = exception.tag
@@ -26,5 +27,10 @@ class ApplicationController < ActionController::Base
   def process_unauthorized_error(exception)
     errors = { errors: [{ status: 401, code: :unauthorized, title: 'Unauthorized', detail: exception.message }] }
     render json: errors, status: :unauthorized
+  end
+
+  def process_not_found(exception)
+    errors = { errors: [{ status: 404, code: :not_found, title: 'Not Found', detail: exception.message }] }
+    render json: errors, status: :not_found
   end
 end

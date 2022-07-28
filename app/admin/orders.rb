@@ -21,6 +21,7 @@ ActiveAdmin.register Order do
       f.input :due_date
       f.input :organization
       f.input :user
+      f.input :state
     end
     f.actions
   end

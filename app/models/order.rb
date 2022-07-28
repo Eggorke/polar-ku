@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :organization
 
-  before_save :set_internal_id
+  before_create :set_internal_id
 
   has_many :order_items, dependent: :destroy
 

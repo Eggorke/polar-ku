@@ -29,7 +29,11 @@ export default class ApiService {
     return api.post(BACKEND_ROUTES.orders, {body: payload})
   }
 
-  getAllOrders() {
-    return api.get(BACKEND_ROUTES.orders)
+  getAllOrders(query: {}) {
+    return api.get(BACKEND_ROUTES.orders, {query: query})
+  }
+
+  getOrder(id: string) {
+    return api.get(`${BACKEND_ROUTES.orders}/${id}`)
   }
 }

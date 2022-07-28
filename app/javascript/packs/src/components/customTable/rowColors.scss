@@ -1,0 +1,22 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/variables';
+
+.pending {
+  background-color: $color-blue-light;
+  transition: all 1s;
+}
+
+.in_progress {
+  background-color: $color-yellow-main;
+  transition: all 1s;
+}
+
+.completed {
+  background-color: $color-green-main;
+  transition: all 1s;
+}
+
+.rejected {
+  background-color: $color-red-main;
+  transition: all 1s;
+}

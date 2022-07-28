@@ -12,6 +12,7 @@ module Orders
     def execute
       orders = scope
       orders = for_current_organization(orders)
+      orders = sorting(orders)
       orders
     end
 
@@ -20,6 +21,10 @@ module Orders
 
     def for_current_organization(orders)
       orders.for_organization(current_user.organization_id)
+    end
+
+    def sorting(orders)
+      orders.order(internal_id: :desc)
     end
 
   end
